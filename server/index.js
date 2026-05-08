@@ -437,6 +437,20 @@ app.get('/api/projects/:projectName/files', authenticateToken, async (req, res) 
   }
 });
 
+app.get('/api/capabilities', authenticateToken, async (req, res) => {
+  try {
+    const indexPath = path.join(process.env.HOME, 'MASTER_INDEX.md');
+    const content = await fsPromises.readFile(indexPath, 'utf8');
+    res.json({ content });
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      res.status(404).json({ error: 'MASTER_INDEX.md not found' });
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
 // WebSocket connection handler that routes based on URL path
 wss.on('connection', (ws, request) => {
   const url = request.url;

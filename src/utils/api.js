@@ -72,6 +72,8 @@ export const api = {
     }),
   getFiles: (projectName) =>
     authenticatedFetch(`/api/projects/${projectName}/files`),
+  capabilities: () =>
+    authenticatedFetch('/api/capabilities'),
   transcribe: (formData) =>
     authenticatedFetch('/api/transcribe', {
       method: 'POST',

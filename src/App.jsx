@@ -26,6 +26,7 @@ import MobileNav from './components/MobileNav';
 import ToolsSettings from './components/ToolsSettings';
 import QuickSettingsPanel from './components/QuickSettingsPanel';
 import ErrorBoundary from './components/ErrorBoundary';
+import CapabilitiesDashboard from './components/CapabilitiesDashboard';
 
 import { useWebSocket } from './utils/websocket';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -658,6 +659,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<AppContent />} />
                 <Route path="/session/:sessionId" element={<AppContent />} />
+                <Route path="/dashboard" element={<CapabilitiesDashboard />} />
               </Routes>
             </Router>
           </ProtectedRoute>

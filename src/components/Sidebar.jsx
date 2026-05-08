@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
 
-import { FolderOpen, Folder, Plus, MessageSquare, Clock, ChevronDown, ChevronRight, Edit3, Check, X, Trash2, Settings, FolderPlus, RefreshCw, Sparkles, Edit2, Star, Search } from 'lucide-react';
+import { FolderOpen, Folder, Plus, MessageSquare, Clock, ChevronDown, ChevronRight, Edit3, Check, X, Trash2, Settings, FolderPlus, RefreshCw, Sparkles, Edit2, Star, Search, LayoutGrid } from 'lucide-react';
 import { cn } from '../lib/utils';
 import GeminiLogo from './GeminiLogo';
 import { api } from '../utils/api';
@@ -1284,7 +1284,27 @@ function Sidebar({
       )}
       
       {/* Settings Section */}
-      <div className="md:p-2 md:border-t md:border-border flex-shrink-0">
+      <div className="md:p-2 md:border-t md:border-border flex-shrink-0 space-y-1">
+        {/* Capabilities Dashboard Link */}
+        <button
+          className="md:hidden w-full h-14 bg-primary/10 hover:bg-primary/20 rounded-2xl flex items-center justify-start gap-4 px-4 mb-2 active:scale-[0.98] transition-all duration-150"
+          onClick={() => window.location.href = '/dashboard'}
+        >
+          <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center">
+            <LayoutGrid className="w-5 h-5 text-primary" />
+          </div>
+          <span className="text-lg font-medium text-foreground">Control Center</span>
+        </button>
+
+        <Button
+          variant="ghost"
+          className="hidden md:flex w-full justify-start gap-2 p-2 h-auto font-normal text-primary hover:text-primary/80 hover:bg-primary/10 transition-colors duration-200"
+          onClick={() => window.location.href = '/dashboard'}
+        >
+          <LayoutGrid className="w-3 h-3" />
+          <span className="text-xs">Control Center</span>
+        </Button>
+
         {/* Mobile Settings */}
         <div className="md:hidden p-4 pb-20 border-t border-border/50">
           <button
